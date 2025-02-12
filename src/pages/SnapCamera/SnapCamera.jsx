@@ -10,6 +10,7 @@ const SnapCamera = () => {
   const cameraSelectRef = useRef(null);
   const lensSelectRef = useRef(null);
 
+
   useEffect(() => {
     const init = async () => {
       const cameraKit = await bootstrapCameraKit({ apiToken: apiToken });
@@ -21,8 +22,9 @@ const SnapCamera = () => {
       if (canvas) {
         canvas.replaceWith(session.output.live);
       }
-      const { lenses } = await cameraKit.lenses.repository.loadLensGroups([lensGroupId]);
-      session.applyLens(lenses[19]);
+      const { lenses } = await cameraKit.lensRepository.loadLensGroups([lensGroupId]);
+      session.applyLens(lenses[20]);
+      
       await setCameraKitSource(session);
       await attachCamerasToSelect(session);
       console.log('attachCamerasToSelect is called');
